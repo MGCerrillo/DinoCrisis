@@ -31,7 +31,6 @@ int main (){
     while (!ficheroObj.eof ()){
 
         getline (ficheroObj, linea);
-        cout << linea << endl;
 
         if (regexec (&regV, linea.c_str (), 5, matches, 0) == 0){
 
