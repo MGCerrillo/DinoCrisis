@@ -19,7 +19,7 @@ int main (){
     string patronF = "^f (.*)/.* (.*)/.* (.*)/.*";
     regmatch_t matches [5];
     string linea, s;
-    std::vector <int> v;
+    std::vector <double> v;
     std::vector <int> f;
 
     ifstream ficheroObj ("imagen.obj");
@@ -35,9 +35,9 @@ int main (){
 
         if (regexec (&regV, linea.c_str (), 5, matches, 0) == 0){
 
-            v.push_back (atoi (linea.substr (matches [1].rm_so, matches [1].rm_eo - matches [1].rm_so).c_str ()));
-            v.push_back (atoi (linea.substr (matches [2].rm_so, matches [2].rm_eo - matches [2].rm_so).c_str ()));
-            v.push_back (atoi (linea.substr (matches [3].rm_so, matches [3].rm_eo - matches [3].rm_so).c_str ()));
+            v.push_back (atof (linea.substr (matches [1].rm_so, matches [1].rm_eo - matches [1].rm_so).c_str ()));
+            v.push_back (atof (linea.substr (matches [2].rm_so, matches [2].rm_eo - matches [2].rm_so).c_str ()));
+            v.push_back (atof (linea.substr (matches [3].rm_so, matches [3].rm_eo - matches [3].rm_so).c_str ()));
 
         }else if (regexec (&regF, linea.c_str (), 5, matches, 0) == 0){
 
@@ -45,37 +45,26 @@ int main (){
             f.push_back (atoi (linea.substr (matches [2].rm_so, matches [2].rm_eo - matches [2].rm_so).c_str ()));
             f.push_back (atoi (linea.substr (matches [3].rm_so, matches [3].rm_eo - matches [3].rm_so).c_str ()));
 
-        }else{
-
-            cout << "Match not found";
-            cout << endl;
-
         }
     }
 
     cout << "Vertices: " << endl;
-    
-    for (int i = 0; i < v.size (); i++){
 
-        cout << "Coord ";
-        cout << i;
-        cout << ": ";
-        cout << v [i];
-        cout << endl;
-
-    }
+    cout << v.size () << endl;
+    cout << "Vertice 1: ";
+    cout << v [0] << endl;
+    cout << v [1] << endl;
+    cout << v [2] << endl;
+    cout << v [3] << endl;
 
     cout << "Caras:" << endl;
 
-    for (int i = 0; i < f.size (); i++){
-
-        cout << "Coord ";
-        cout << i;
-        cout << ": ";
-        cout << f [i];
-        cout << endl;
-
-    }
+    cout << f.size () << endl;
+    cout << "Cara 1: ";
+    cout << f [0] << endl;
+    cout << f [1] << endl;
+    cout << f [2] << endl;
+    cout << f [3] << endl;
 
     regfree (&regV);
     regfree (&regF);
